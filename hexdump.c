@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_ascii(unsigned char buf[], size_t len)
+void print_ascii(const unsigned char buf[], const size_t len)
 {
 	size_t i;
 
@@ -37,7 +37,7 @@ void print_ascii(unsigned char buf[], size_t len)
 	putchar('\n');
 }
 
-void print_hex(unsigned char buf[], size_t len)
+void print_hex(const unsigned char buf[], const size_t len)
 {
 	size_t i;
 
@@ -56,7 +56,7 @@ void print_hex(unsigned char buf[], size_t len)
 	putchar(' ');
 }
 
-int main(int argc, const char *argv[])
+int main(const int argc, const char *argv[])
 {
 	size_t len;
 	unsigned int addr = 0;
