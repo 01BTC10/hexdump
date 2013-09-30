@@ -20,12 +20,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_ascii(unsigned char buf[], size_t cnt)
+void print_ascii(unsigned char buf[], size_t len)
 {
-	unsigned int i;
+	size_t i;
 
 	for (i = 0; i < 16; i++) {
-		if (i < cnt) {
+		if (i < len) {
 			if ((buf[i] < 32) || (buf[i] > 126)) {
 				putchar('.');
 			} else {
@@ -37,13 +37,13 @@ void print_ascii(unsigned char buf[], size_t cnt)
 	putchar('\n');
 }
 
-void print_hex(unsigned char *ptr, size_t cnt)
+void print_hex(unsigned char buf[], size_t len)
 {
-	unsigned int i;
+	size_t i;
 
 	for (i = 0; i < 16; i++) {
-		if (i < cnt) {
-			printf("%02X", *ptr++);
+		if (i < len) {
+			printf("%02X", *buf++);
 		} else {
 			printf("  ");
 		}
@@ -58,9 +58,9 @@ void print_hex(unsigned char *ptr, size_t cnt)
 
 int main(int argc, const char *argv[])
 {
-	size_t cnt;
+	size_t len;
 	unsigned int addr = 0;
-	unsigned char *ptr, buf[16];
+	unsigned char buf[16];
 	FILE *fp = NULL;
 
 	if (argc > 1) {
@@ -72,12 +72,11 @@ int main(int argc, const char *argv[])
 		fp = stdin;
 	}
 
-	while ((cnt = fread(buf, sizeof(char), 16, fp)) > 0) {
+	while ((len = fread(buf, sizeof(char), 16, fp)) > 0) {
 		printf("%08X: ", addr);
 		addr += 16;
-		ptr = buf;
-		print_hex(ptr, cnt);
-		print_ascii(buf, cnt);
+		print_hex(buf, len);
+		print_ascii(buf, len);
 	}
 
 	/* Do the polite thing */
