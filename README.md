@@ -14,7 +14,7 @@ http://en.wikipedia.org/wiki/Hexdump
 
 ## License
 
-Copyright &copy; 2013 Boohbah <<boohbah at gmail.com>>
+Copyright &copy; 2013 Boohbah <<boohbah@gmail.com>>
 
 Licensed under the [GPL License, Version 2.0][GPL]  
 
