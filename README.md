@@ -1,8 +1,8 @@
 # hexdump
 
-hexdump algorithm based on Wikipedia pseudocode
+Dump a file in hexadecimal and ASCII
 
-http://en.wikipedia.org/wiki/hexdump
+http://en.wikipedia.org/wiki/Hexdump
 
 ## Installation
 
