@@ -10,7 +10,7 @@ http://en.wikipedia.org/wiki/Hexdump
 
 ## Usage
 
-    $ ./hexdump
+    $ ./hexdump /bin/login
 
 ## License
 
