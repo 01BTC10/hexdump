@@ -33,7 +33,6 @@ void print_ascii(const unsigned char buf[], const size_t len)
 			}
 		}
 	}
-
 	putchar('\n');
 }
 
@@ -41,18 +40,18 @@ void print_hex(const unsigned char buf[], const size_t len)
 {
 	size_t i;
 
-	for (i = 0; i < 16; i++) {
+	for (i = 0; i < 16; i += 2) {
 		if (i < len) {
-			printf("%02X", *buf++);
+			if (i + 1 < len) {
+				printf("%02X", buf[i + 1]);
+			} else {
+				printf("00");
+			}
+			printf("%02X ", buf[i]);
 		} else {
-			printf("  ");
-		}
-
-		if (i % 2 == 1) {
-			putchar(' ');
+			printf("     ");
 		}
 	}
-
 	putchar(' ');
 }
 
@@ -66,21 +65,16 @@ int main(const int argc, const char *argv[])
 	if (argc > 1) {
 		fp = fopen(argv[1], "r");
 	}
-
 	/* fp is NULL when there is no arg or when fopen fails */
 	if (fp == NULL) {
 		fp = stdin;
 	}
-
 	while ((len = fread(buf, sizeof(char), 16, fp)) > 0) {
 		printf("%08X: ", addr);
 		addr += 16;
 		print_hex(buf, len);
 		print_ascii(buf, len);
 	}
-
-	/* Do the polite thing */
 	fclose(fp);
-
 	return 0;
 }
