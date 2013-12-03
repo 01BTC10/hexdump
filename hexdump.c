@@ -74,6 +74,9 @@ int main(const int argc, const char *argv[])
 		addr += 16;
 		print_hex(buf, len);
 		print_ascii(buf, len);
+		if (len < 16) {
+			printf("%08X:\n", addr + (unsigned int) len);
+		}
 	}
 	fclose(fp);
 	return 0;
