@@ -71,12 +71,12 @@ int main(const int argc, const char *argv[])
 	}
 	while ((len = fread(buf, sizeof(char), 16, fp)) > 0) {
 		printf("%08X: ", addr);
-		addr += 16;
 		print_hex(buf, len);
 		print_ascii(buf, len);
 		if (len < 16) {
 			printf("%08X:\n", addr + (unsigned int) len);
 		}
+		addr += 16;
 	}
 	fclose(fp);
 	return 0;
