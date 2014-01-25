@@ -36,7 +36,7 @@ void print_ascii(const unsigned char buf[], const size_t len)
 	putchar('\n');
 }
 
-void print_hex(const unsigned char buf[], const size_t len)
+void print_hex_le(const unsigned char buf[], const size_t len)
 {
 	size_t i;
 
@@ -50,6 +50,23 @@ void print_hex(const unsigned char buf[], const size_t len)
 			printf("%02X ", buf[i]);
 		} else {
 			printf("     ");
+		}
+	}
+	putchar(' ');
+}
+
+void print_hex_be(const unsigned char buf[], const size_t len)
+{
+	size_t i;
+
+	for (i = 0; i < 16; i++) {
+		if (i < len) {
+			printf("%02X", buf[i]);
+		} else {
+			printf("  ");
+		}
+		if (i % 2) {
+			putchar(' ');
 		}
 	}
 	putchar(' ');
@@ -71,7 +88,7 @@ int main(const int argc, const char *argv[])
 	}
 	while ((len = fread(buf, sizeof(char), 16, fp)) > 0) {
 		printf("%08X: ", addr);
-		print_hex(buf, len);
+		print_hex_le(buf, len);
 		print_ascii(buf, len);
 		if (len < 16) {
 			printf("%08X:\n", addr + (unsigned int) len);
