@@ -88,7 +88,7 @@ int main(const int argc, const char *argv[])
 	}
 	while ((len = fread(buf, sizeof(char), 16, fp)) > 0) {
 		printf("%08X: ", addr);
-		print_hex_le(buf, len);
+		print_hex_be(buf, len);
 		print_ascii(buf, len);
 		if (len < 16) {
 			printf("%08X:\n", addr + (unsigned int) len);
