@@ -9,4 +9,4 @@ hexdump:
 	$(CC) $(CFLAGS) hexdump.c -o hexdump
 
 clean:
-	rm -f hexdump
+	rm -f hexdump hexdump.s
