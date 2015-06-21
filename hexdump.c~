@@ -25,15 +25,14 @@
 void print_cp437(unsigned char buf[], size_t len)
 {
 	size_t i;
-	wchar_t cp[] =
-	    L" ☺☻♥♦♣♠•◘○◙♂♀♪♫☼►◄↕‼¶§▬↨↑↓→←∟↔▲▼"
-	    " !\"#$%&'()*+,-./0123456789:;<=>"
-	    "?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]"
-	    "^_`abcdefghijklmnopqrstuvwxyz{|}"
-	    "~⌂ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥"
-	    "₧ƒáíóúñÑªº¿⌐¬½¼¡«»░▒▓│┤╡╢╖╕╣║╗╝╜"
-	    "╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬╧╨╤╥╙╘╒╓╫╪┘┌█▄▌"
-	    "▐▀αßΓπΣσµτΦΘΩδ∞φε∩≡±≥≤⌠⌡÷≈°∙·√ⁿ²■ ";
+	wchar_t cp[] = L" ☺☻♥♦♣♠•◘○◙♂♀♪♫☼►◄↕‼¶§▬↨↑↓→←∟↔▲▼"
+		        " !\"#$%&'()*+,-./0123456789:;<=>"
+			"?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]"
+			"^_`abcdefghijklmnopqrstuvwxyz{|}"
+			"~⌂ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥"
+			"₧ƒáíóúñÑªº¿⌐¬½¼¡«»░▒▓│┤╡╢╖╕╣║╗╝╜"
+			"╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬╧╨╤╥╙╘╒╓╫╪┘┌█▄▌"
+			"▐▀αßΓπΣσµτΦΘΩδ∞φε∩≡±≥≤⌠⌡÷≈°∙·√ⁿ²■ ";
 
 	for (i = 0; i < 16; i++)
 		if (i < len)
@@ -75,10 +74,10 @@ int main(int argc, char *argv[])
 		print_hex_be(buf, len);
 		print_cp437(buf, len);
 		if (len < 16)
-			wprintf(L"%08X:\n", addr + (unsigned int)len);
+			wprintf(L"%08X:\n", addr + (unsigned int) len);
 		addr += 16;
 	}
 	fclose(fp);
 
-	return EXIT_SUCCESS;
+	return 0;
 }
